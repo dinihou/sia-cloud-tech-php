@@ -11,7 +11,7 @@ $sia_cloud_tech->progress_callback = function ($progress) {
     echo $progress.' %'."\n";
 };
 echo "\n"."-> uploading ..."."\n";
-$result = $sia_cloud_tech->uploadstream('image_upload.jpg');
+$result = $sia_cloud_tech->uploadstream('image_upload.jpg','/image.jpg');
 if ($result) {
     echo "\n"."-> downloading ..."."\n";
     $sia_cloud_tech->progress_callback = function ($progress) {
@@ -31,7 +31,7 @@ if ($result) {
             echo $result."\n";
         }  
         echo "\n"."-> info ..."."\n";
-        $result = $sia_cloud_tech->cloud_file('image_01.jpg');
+        $result = $sia_cloud_tech->cloud_file('image.jpg');
         if ($result) {
             echo $result."\n";
         }  
@@ -39,7 +39,7 @@ if ($result) {
         echo json_encode($sia_cloud_tech->last_error)."\n";
     }    
     echo "\n"."-> deleting ..."."\n";
-    $sia_cloud_tech->cloud_delete('image_01.jpg');
+    $sia_cloud_tech->cloud_delete('image.jpg');
 
 } else {
     echo json_encode($sia_cloud_tech->last_error)."\n";
